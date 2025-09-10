@@ -1,80 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karina Landing Page</title>
-    <!-- Use the Inter font, which is clean and readable -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
-    <!-- Load Tailwind CSS for easy styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karina - Developer Portfolio</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
 </head>
-<body class="bg-blue-50 flex items-center justify-center min-h-screen p-4">
+<body class="bg-slate-900 text-slate-100">
 
-    <!-- Main content card with a Ghibli-inspired color scheme -->
-    <div class="max-w-2xl w-full bg-slate-100 rounded-3xl shadow-xl p-8 md:p-12 transform transition-all duration-500 hover:scale-105">
-
-        <!-- Header section with a subtle, earthy tone -->
-        <div class="flex flex-col md:flex-row items-center md:items-start text-center md:text-left md:space-x-8 mb-8">
-            <!-- Profile image section, now with a gentle green border -->
-            <div class="shrink-0 mb-6 md:mb-0 overflow-hidden rounded-full shadow-lg border-4 border-green-300">
-                <!-- The Totoro image with a slightly different layout -->
-                <img src="totoro.png" alt="A cute Totoro character" class="h-32 w-32 object-contain">
-            </div>
-
-            <!-- Text section next to the image -->
-            <div>
-                <h1 class="text-3xl md:text-4xl font-extrabold text-green-700 mb-2 tracking-tight">
-                    Karina's Garden
-                </h1>
-                <p class="text-md md:text-lg text-gray-700">
-                    Welcome to my cozy corner inspired by the magical worlds of Ghibli.
-                </p>
-            </div>
-        </div>
-
-        <!-- Section for adding more images -->
-        <div class="mt-8 pt-8 border-t border-gray-300">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">
-                My Favorites
-            </h2>
-            <p class="text-md text-gray-600 mb-6 text-center">
-                You can add more images here to create a gallery or showcase your favorite things. Just replace the placeholder images below with your own.
-            </p>
-            
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                <!-- Example of where to add a new image -->
-                <div class="relative overflow-hidden rounded-2xl shadow-lg group">
-                    <img src="https://placehold.co/400x300/F0F0F0/000000?text=Image+1" alt="Placeholder image 1" class="w-full h-auto object-cover transform transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-green-500 opacity-20 transition-opacity duration-300 group-hover:opacity-0"></div>
-                </div>
-
-                <!-- Example of where to add a new image -->
-                <div class="relative overflow-hidden rounded-2xl shadow-lg group">
-                    <img src="https://placehold.co/400x300/F0F0F0/000000?text=Image+2" alt="Placeholder image 2" class="w-full h-auto object-cover transform transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-green-500 opacity-20 transition-opacity duration-300 group-hover:opacity-0"></div>
-                </div>
-
-                <!-- Example of where to add a new image -->
-                <div class="relative overflow-hidden rounded-2xl shadow-lg group">
-                    <img src="https://placehold.co/400x300/F0F0F0/000000?text=Image+3" alt="Placeholder image 3" class="w-full h-auto object-cover transform transition-transform duration-300 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-green-500 opacity-20 transition-opacity duration-300 group-hover:opacity-0"></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- A call-to-action button at the bottom -->
-        <div class="mt-8 text-center">
-            <a href="#" class="inline-block bg-green-600 text-white font-semibold py-3 px-8 rounded-full shadow-md hover:bg-green-700 transition duration-300 ease-in-out transform hover:scale-105">
-                Explore More
-            </a>
-        </div>
+  <!-- Hero Section -->
+  <header class="flex flex-col items-center text-center py-16 px-6">
+    <div class="mb-6 rounded-full overflow-hidden border-4 border-slate-700 shadow-lg">
+      <img src="https://placehold.co/128x128" alt="Karina's Profile Photo" class="h-32 w-32 object-cover">
     </div>
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-2">Hey, I'm <span class="text-green-400">Karina</span>👋</h1>
+    <h2 class="text-xl md:text-2xl font-semibold text-slate-300 mb-4">A Software Developer</h2>
+    <p class="max-w-2xl text-slate-400 mb-6">
+      Seorang software developer yang bersemangat membangun aplikasi web yang efisien dan user-friendly. 
+      (isi dengan keahlian Anda, misalnya: JavaScript, React, Node.js).
+    </p>
+    <div class="flex space-x-4">
+      <a href="#" class="px-4 py-2 bg-green-500 rounded-xl font-medium hover:bg-green-600">Contact</a>
+      <a href="#" class="px-4 py-2 bg-slate-700 rounded-xl font-medium hover:bg-slate-600">Projects</a>
+    </div>
+  </header>
+
+  <!-- Capabilities Section -->
+  <section class="py-16 px-6 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-12">Building Digital Experiences</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-slate-800 p-6 rounded-2xl shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">What Can I Do?</h3>
+        <ul class="space-y-2 text-slate-400 text-sm">
+          <li>Web Development</li>
+          <li>Responsive Design</li>
+          <li>Frontend & Backend</li>
+          <li>Database Integration</li>
+        </ul>
+      </div>
+      <div class="bg-slate-800 p-6 rounded-2xl shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Tools I Use</h3>
+        <ul class="space-y-2 text-slate-400 text-sm">
+          <li>JavaScript, React</li>
+          <li>Node.js, Express</li>
+          <li>Tailwind CSS</li>
+          <li>Git & GitHub</li>
+        </ul>
+      </div>
+      <div class="bg-slate-800 p-6 rounded-2xl shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Unique Design</h3>
+        <ul class="space-y-2 text-slate-400 text-sm">
+          <li>Modern UI</li>
+          <li>Accessible Layouts</li>
+          <li>Performance Optimized</li>
+          <li>User-Centered Approach</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="py-16 px-6 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-12">My Projects</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="bg-slate-800 p-6 rounded-2xl shadow-lg">
+        <h3 class="text-lg font-semibold mb-2">Project 1</h3>
+        <p class="text-sm text-slate-400">
+          Deskripsi singkat tentang proyek ini. Jelaskan teknologi yang digunakan dan tujuan dari proyek tersebut.
+        </p>
+      </div>
+      <div class="bg-slate-800 p-6 rounded-2xl shadow-lg">
+        <h3 class="text-lg font-semibold mb-2">Project 2</h3>
+        <p class="text-sm text-slate-400">
+          Deskripsi singkat tentang proyek ini. Jelaskan teknologi yang digunakan dan tujuan dari proyek tersebut.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-slate-800 py-16 px-6 text-center">
+    <h2 class="text-3xl font-bold mb-4 text-green-400">Bringing your ideas to life</h2>
+    <p class="text-slate-300 mb-6">Let's turn your vision into reality 🚀</p>
+    <a href="#" class="px-6 py-3 bg-green-500 rounded-xl font-medium hover:bg-green-600">Let’s Work Together</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 px-6 text-center text-slate-400 text-sm">
+    <p>© 2025 Karina Amalia Herfery. All rights reserved.</p>
+    <div class="mt-4 flex justify-center space-x-4">
+      <a href="#" class="hover:text-green-400">LinkedIn</a>
+      <a href="#" class="hover:text-green-400">GitHub</a>
+      <a href="mailto:karina@example.com" class="hover:text-green-400">Email</a>
+    </div>
+  </footer>
 
 </body>
 </html>
