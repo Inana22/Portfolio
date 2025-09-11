@@ -4,58 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Karina - Developer Portfolio</title>
+
+  <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-  </style>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-900 text-slate-100">
+<body>
 
   <!-- Hero Section -->
-  <header class="flex flex-col items-center text-center py-16 px-6">
-    <div class="mb-6 rounded-full overflow-hidden border-4 border-slate-700 shadow-lg">
-      <img src="https://placehold.co/128x128" alt="Karina's Profile Photo" class="h-32 w-32 object-cover">
+  <header id="hero">
+    <div class="profile-photo">
+      <img src="https://placehold.co/128x128" alt="Karina's Profile Photo">
     </div>
-    <h1 class="text-4xl md:text-5xl font-extrabold mb-2">Hey, I'm <span class="text-green-400">Karina</span>👋</h1>
-    <h2 class="text-xl md:text-2xl font-semibold text-slate-300 mb-4">A Software Developer</h2>
-    <p class="max-w-2xl text-slate-400 mb-6">
+    <h1>Hey, I'm <span>Karina</span>👋</h1>
+    <h2>A Software Developer</h2>
+    <p>
       Seorang software developer yang bersemangat membangun aplikasi web yang efisien dan user-friendly. 
       (isi dengan keahlian Anda, misalnya: JavaScript, React, Node.js).
     </p>
-    <div class="flex space-x-4">
-      <a href="#" class="px-4 py-2 bg-green-500 rounded-xl font-medium hover:bg-green-600">Contact</a>
-      <a href="#" class="px-4 py-2 bg-slate-700 rounded-xl font-medium hover:bg-slate-600">Projects</a>
+    <div class="hero-buttons">
+      <a href="#">Contact</a>
+      <a href="#">Projects</a>
     </div>
   </header>
 
   <!-- Capabilities Section -->
-  <section class="py-16 px-6 max-w-5xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-12">Building Digital Experiences</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div class="bg-slate-800 p-6 rounded-2xl shadow-lg">
-        <h3 class="text-xl font-semibold mb-3">What Can I Do?</h3>
-        <ul class="space-y-2 text-slate-400 text-sm">
+  <section id="capabilities">
+    <h2>Building Digital Experiences</h2>
+    <div class="capabilities-grid">
+      <div class="card">
+        <h3>What Can I Do?</h3>
+        <ul>
           <li>Web Development</li>
           <li>Responsive Design</li>
           <li>Frontend & Backend</li>
           <li>Database Integration</li>
         </ul>
       </div>
-      <div class="bg-slate-800 p-6 rounded-2xl shadow-lg">
-        <h3 class="text-xl font-semibold mb-3">Tools I Use</h3>
-        <ul class="space-y-2 text-slate-400 text-sm">
+      <div class="card">
+        <h3>Tools I Use</h3>
+        <ul>
           <li>JavaScript, React</li>
           <li>Node.js, Express</li>
           <li>Tailwind CSS</li>
           <li>Git & GitHub</li>
         </ul>
       </div>
-      <div class="bg-slate-800 p-6 rounded-2xl shadow-lg">
-        <h3 class="text-xl font-semibold mb-3">Unique Design</h3>
-        <ul class="space-y-2 text-slate-400 text-sm">
+      <div class="card">
+        <h3>Unique Design</h3>
+        <ul>
           <li>Modern UI</li>
           <li>Accessible Layouts</li>
           <li>Performance Optimized</li>
@@ -66,18 +65,18 @@
   </section>
 
   <!-- Projects Section -->
-  <section class="py-16 px-6 max-w-5xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-12">My Projects</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="bg-slate-800 p-6 rounded-2xl shadow-lg">
-        <h3 class="text-lg font-semibold mb-2">Project 1</h3>
-        <p class="text-sm text-slate-400">
+  <section id="projects">
+    <h2>My Projects</h2>
+    <div class="projects-grid">
+      <div class="card">
+        <h3>Project 1</h3>
+        <p>
           Deskripsi singkat tentang proyek ini. Jelaskan teknologi yang digunakan dan tujuan dari proyek tersebut.
         </p>
       </div>
-      <div class="bg-slate-800 p-6 rounded-2xl shadow-lg">
-        <h3 class="text-lg font-semibold mb-2">Project 2</h3>
-        <p class="text-sm text-slate-400">
+      <div class="card">
+        <h3>Project 2</h3>
+        <p>
           Deskripsi singkat tentang proyek ini. Jelaskan teknologi yang digunakan dan tujuan dari proyek tersebut.
         </p>
       </div>
@@ -85,19 +84,19 @@
   </section>
 
   <!-- CTA Section -->
-  <section class="bg-slate-800 py-16 px-6 text-center">
-    <h2 class="text-3xl font-bold mb-4 text-green-400">Bringing your ideas to life</h2>
-    <p class="text-slate-300 mb-6">Let's turn your vision into reality 🚀</p>
-    <a href="#" class="px-6 py-3 bg-green-500 rounded-xl font-medium hover:bg-green-600">Let’s Work Together</a>
+  <section id="cta">
+    <h2>Bringing your ideas to life</h2>
+    <p>Let's turn your vision into reality 🚀</p>
+    <a href="#">Let’s Work Together</a>
   </section>
 
   <!-- Footer -->
-  <footer class="py-8 px-6 text-center text-slate-400 text-sm">
+  <footer>
     <p>© 2025 Karina Amalia Herfery. All rights reserved.</p>
-    <div class="mt-4 flex justify-center space-x-4">
-      <a href="#" class="hover:text-green-400">LinkedIn</a>
-      <a href="#" class="hover:text-green-400">GitHub</a>
-      <a href="mailto:karina@example.com" class="hover:text-green-400">Email</a>
+    <div class="footer-links">
+      <a href="#">LinkedIn</a>
+      <a href="#">GitHub</a>
+      <a href="mailto:karina@example.com">Email</a>
     </div>
   </footer>
 
