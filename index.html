@@ -1,114 +1,898 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karina - Developer Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karina Amalia Herfery — AI & Web Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap">
+    :root {
+      --bg: #080c10;
+      --bg2: #0e1318;
+      --bg3: #141b22;
+      --border: rgba(255,255,255,0.07);
+      --border2: rgba(255,255,255,0.13);
+      --text: #e8edf2;
+      --muted: #7a8a99;
+      --accent: #4af0c8;
+      --accent2: #3de0ff;
+      --accent-dim: rgba(74,240,200,0.12);
+      --accent-glow: rgba(74,240,200,0.08);
+    }
 
-    <link rel="stylesheet" href="style.css">
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Subtle grid bg */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 3rem;
+      background: rgba(8,12,16,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* LAYOUT */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    section { padding: 6rem 0; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 6rem;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 4rem;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--accent-dim);
+      border: 1px solid rgba(74,240,200,0.25);
+      border-radius: 100px;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .hero-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+    .hero-name em {
+      font-style: normal;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--accent);
+    }
+    .hero-role {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+    .hero-desc strong { color: var(--text); font-weight: 500; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.02em;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #080c10;
+    }
+    .btn-primary:hover { background: #6af5d4; transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border2);
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    .hero-photo-wrap {
+      position: relative;
+    }
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -12px;
+      border: 1px dashed rgba(74,240,200,0.3);
+      border-radius: 50%;
+      animation: spin 20s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hero-photo {
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--accent);
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-photo-placeholder {
+      width: 100%; height: 100%;
+      background: var(--bg3);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    /* STATS */
+    .stats-bar {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg2);
+      margin-top: 2.5rem;
+    }
+    .stat {
+      flex: 1;
+      padding: 1.2rem 1.5rem;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--muted); font-weight: 400; }
+
+    /* SECTION HEADERS */
+    .sec-header { margin-bottom: 3rem; }
+    .sec-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .sec-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .sec-sub {
+      margin-top: 0.75rem;
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 540px;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .skill-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .skill-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+    .skill-icon {
+      width: 40px; height: 40px;
+      background: var(--accent-dim);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .skill-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag {
+      font-size: 0.78rem;
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .tag.accent { background: var(--accent-dim); border-color: rgba(74,240,200,0.25); color: var(--accent); }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .project-card:hover {
+      border-color: rgba(74,240,200,0.4);
+      transform: translateY(-5px);
+    }
+    .project-card.featured {
+      grid-column: span 2;
+      background: linear-gradient(135deg, var(--bg2) 0%, rgba(74,240,200,0.04) 100%);
+      border-color: rgba(74,240,200,0.2);
+    }
+    .project-year {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .project-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--text);
+    }
+    .project-role {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }
+    .project-tech { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.25rem; }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+    .project-link:hover { gap: 0.6rem; }
+    .project-link::after { content: '→'; }
+
+    /* ACHIEVEMENTS */
+    .achieve-list { display: flex; flex-direction: column; gap: 1rem; }
+    .achieve-item {
+      display: flex; align-items: flex-start; gap: 1.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: border-color 0.2s;
+    }
+    .achieve-item:hover { border-color: var(--accent); }
+    .achieve-icon {
+      min-width: 44px; height: 44px;
+      background: var(--accent-dim);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+    .achieve-year {
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.25rem;
+    }
+    .achieve-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem; font-weight: 700; color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+    .achieve-desc { font-size: 0.88rem; color: var(--muted); }
+
+    /* EXPERIENCE */
+    .exp-list { display: flex; flex-direction: column; gap: 0; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-timeline { display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .exp-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px var(--accent-dim);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .exp-line {
+      width: 1px;
+      flex: 1;
+      background: var(--border2);
+      margin-top: 4px;
+    }
+    .exp-period {
+      font-size: 0.8rem; color: var(--muted);
+      font-weight: 500; margin-bottom: 0.25rem;
+      letter-spacing: 0.04em;
+    }
+    .exp-role {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem; font-weight: 700; color: var(--text);
+      margin-bottom: 0.1rem;
+    }
+    .exp-org { font-size: 0.88rem; color: var(--accent); margin-bottom: 0.75rem; }
+    .exp-bullets { list-style: none; }
+    .exp-bullets li {
+      font-size: 0.88rem; color: var(--muted);
+      padding: 0.2rem 0;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute; left: 0;
+      color: var(--accent);
+    }
+
+    /* CTA */
+    #cta {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    #cta .container { max-width: 640px; }
+    .cta-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+    .cta-title span { color: var(--accent); }
+    .cta-sub { color: var(--muted); margin-bottom: 2rem; }
+
+    /* FOOTER */
+    footer {
+      padding: 2.5rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      position: relative; z-index: 1;
+    }
+    .footer-links {
+      display: flex; justify-content: center; gap: 2rem;
+      margin-bottom: 1rem;
+    }
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .hero-inner { grid-template-columns: 1fr; text-align: center; }
+      .hero-photo-wrap { display: none; }
+      .hero-btns { justify-content: center; }
+      .stats-bar { flex-direction: column; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat:last-child { border-bottom: none; }
+      .project-card.featured { grid-column: span 1; }
+      section { padding: 4rem 0; }
+    }
+
+    /* ANIMATION */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+  </style>
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo">K.A.</a>
-        <div class="nav-links">
-            <a href="#projects">Projects</a>
-            <a href="#capabilities">Skills</a>
-            <a href="#">Contact</a>
-        </div>
-    </nav>
+  <nav>
+    <a href="#" class="logo">KAH</a>
+    <ul class="nav-links">
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <header id="hero">
-        <div class="profile-photo">
-            <img src="karinaweb.jpg" alt="Karina's Profile Photo">
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-tag">Open to Internship Opportunities</div>
+          <h1 class="hero-name">Karina<br><em>Amalia</em><br>Herfery</h1>
+          <p class="hero-role">AI / ML Developer &amp; Web Engineer</p>
+          <p class="hero-desc">
+            Informatics student at <strong>Universitas Pelita Harapan</strong> with a focus on
+            <strong>Artificial Intelligence, Machine Learning, NLP,</strong> and <strong>Cybersecurity</strong>.
+            Top 14 Finalist at HealthTech AI Challenge 2025 × Siloam.
+          </p>
+          <div class="hero-btns">
+            <a href="mailto:karinaamalia10@gmail.com" class="btn btn-primary">Get in Touch</a>
+            <a href="#projects" class="btn btn-secondary">View Projects</a>
+          </div>
+          <div class="stats-bar fade-in">
+            <div class="stat">
+              <div class="stat-num">9+</div>
+              <div class="stat-label">Projects Built</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">Top 14</div>
+              <div class="stat-label">National AI Challenge</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">3</div>
+              <div class="stat-label">Certifications</div>
+            </div>
+          </div>
         </div>
-        <div class="profile-info">
-            <h1>Hey, I'm <span>Karina</span>👋</h1>
-            <h2>A Software Developer</h2>
-            <p>
-                Seorang software developer yang bersemangat membangun aplikasi web yang efisien dan user-friendly.
-            </p>
-            <div class="hero-buttons">
-                <a href="#">Contact</a>
-                <a href="#projects">Projects</a>
-            </div>
+        <div class="hero-photo-wrap">
+          <div class="hero-photo">
+            <img src="karinaweb.jpg" alt="Karina Amalia Herfery" onerror="this.parentElement.innerHTML='<div class=hero-photo-placeholder>KAH</div>'">
+          </div>
         </div>
-    </header>
+      </div>
+    </div>
+  </section>
 
-    <section id="capabilities">
-        <h2>Building Digital Experiences</h2>
-        <div class="capabilities-grid">
-            <div class="card">
-                <h3>What Can I Do?</h3>
-                <ul>
-                    <li>Web Development</li>
-                    <li>Responsive Design</li>
-                    <li>Frontend & Backend</li>
-                    <li>Database Integration</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Tools I Use</h3>
-                <ul>
-                    <li>JavaScript, React</li>
-                    <li>Node.js, Express</li>
-                    <li>Tailwind CSS</li>
-                    <li>Git & GitHub</li>
-                </ul>
-            </div>
-            <div class="card">
-                <h3>Unique Design</h3>
-                <ul>
-                    <li>Modern UI</li>
-                    <li>Accessible Layouts</li>
-                    <li>Performance Optimized</li>
-                    <li>User-Centered Approach</li>
-                </ul>
-            </div>
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="sec-header fade-in">
+        <div class="sec-tag">Technical Skills</div>
+        <h2 class="sec-title">What I Work With</h2>
+        <p class="sec-sub">From deep learning research to full-stack web development — building across the stack.</p>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card fade-in">
+          <div class="skill-icon">🤖</div>
+          <h3>AI & Machine Learning</h3>
+          <div class="skill-tags">
+            <span class="tag accent">TensorFlow</span>
+            <span class="tag accent">PyTorch</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">CNN</span>
+            <span class="tag">NLP</span>
+            <span class="tag">IndoBERT</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Deep Learning</span>
+          </div>
         </div>
-    </section>
-
-    <section id="projects">
-        <h2>My Projects</h2>
-        <div class="projects-grid">
-            <div class="card">
-                <h3>Flexbox Exercise</h3>
-                <p>
-                    Website latihan flexbox yang dibuat untuk mempelajari layout responsive 
-                    menggunakan CSS Flexbox.
-                </p>
-                <a href="https://inana22.github.io/Exercise-flexbox/" target="_blank">
-                    Lihat Project
-                </a>
-            </div>
-            <div class="card">
-                <h3>Roll Dice Exercise</h3>
-                <p>
-                    Website untuk latihan buat Roll Dice dengan menggunakan JavaScript.
-                </p>
-                <a href="https://inana22.github.io/Project2-RollDice/" target="_blank">
-                    Lihat Project
-                </a>
-            </div>
+        <div class="skill-card fade-in">
+          <div class="skill-icon">💻</div>
+          <h3>Programming Languages</h3>
+          <div class="skill-tags">
+            <span class="tag accent">Python</span>
+            <span class="tag accent">JavaScript</span>
+            <span class="tag">SQL</span>
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">Kotlin</span>
+          </div>
         </div>
-    </section>
-
-    <section id="cta">
-        <h2>Bringing your ideas to life</h2>
-        <p>Let's turn your vision into reality 🚀</p>
-        <a href="#">Let’s Work Together</a>
-    </section>
-
-    <footer>
-        <p>© 2025 Karina Amalia Herfery. All rights reserved.</p>
-        <div class="footer-links">
-            <a href="#">LinkedIn</a>
-            <a href="#">GitHub</a>
-            <a href="mailto:karina@example.com">Email</a>
+        <div class="skill-card fade-in">
+          <div class="skill-icon">🌐</div>
+          <h3>Web & Deployment</h3>
+          <div class="skill-tags">
+            <span class="tag accent">Firebase</span>
+            <span class="tag accent">Vercel</span>
+            <span class="tag">REST API</span>
+            <span class="tag">Web3 / DApps</span>
+            <span class="tag">Smart Contracts</span>
+          </div>
         </div>
-    </footer>
+        <div class="skill-card fade-in">
+          <div class="skill-icon">🛠</div>
+          <h3>Tools & Platforms</h3>
+          <div class="skill-tags">
+            <span class="tag accent">Git & GitHub</span>
+            <span class="tag">Google Colab</span>
+            <span class="tag">Android (Kotlin)</span>
+            <span class="tag">IoT</span>
+            <span class="tag">Research Writing</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <div class="sec-header fade-in">
+        <div class="sec-tag">Portfolio</div>
+        <h2 class="sec-title">Projects</h2>
+        <p class="sec-sub">AI, web, mobile, and blockchain — built across multiple domains.</p>
+      </div>
+      <div class="projects-grid">
+
+        <div class="project-card featured fade-in">
+          <div class="project-year">2025 · Top 14 National Finalist</div>
+          <div class="project-title">EatWell: AI-Powered Nutrition Tracker</div>
+          <div class="project-role">Android Developer</div>
+          <p class="project-desc">
+            Mobile application integrated with machine learning to detect and analyze nutritional content in food in real-time. Built a responsive Android interface in Kotlin bridging AI model processing at the backend with end-user interaction. Reached the Top 14 nationally at HealthTech AI Challenge 2025 × Siloam.
+          </p>
+          <div class="project-tech">
+            <span class="tag accent">Machine Learning</span>
+            <span class="tag accent">Kotlin</span>
+            <span class="tag">Android</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Firebase</span>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-year">2026</div>
+          <div class="project-title">NLP Lecture Transcript Summarization</div>
+          <div class="project-role">ML Research</div>
+          <p class="project-desc">
+            Extractive summarization pipeline using IndoBERT embeddings, K-Means clustering, and TextRank. Evaluated model performance with ROUGE metrics on Indonesian academic transcripts.
+          </p>
+          <div class="project-tech">
+            <span class="tag accent">IndoBERT</span>
+            <span class="tag accent">NLP</span>
+            <span class="tag">K-Means</span>
+            <span class="tag">TextRank</span>
+            <span class="tag">ROUGE</span>
+            <span class="tag">Python</span>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-year">2026</div>
+          <div class="project-title">DonasiChain</div>
+          <div class="project-role">Blockchain DApps Developer</div>
+          <p class="project-desc">
+            Blockchain-based donation platform (DApp) to improve transparency and security of donation transactions. Implemented smart contracts and Web3 blockchain technology, collaborating on full-stack frontend/backend.
+          </p>
+          <div class="project-tech">
+            <span class="tag accent">Blockchain</span>
+            <span class="tag accent">Smart Contracts</span>
+            <span class="tag">Web3</span>
+            <span class="tag">DApps</span>
+            <span class="tag">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-year">2025</div>
+          <div class="project-title">Pneumonia Classification — DenseNet121</div>
+          <div class="project-role">Deep Learning</div>
+          <p class="project-desc">
+            Built a pneumonia classification model using transfer learning with DenseNet121. Performed medical image preprocessing and evaluated deep learning model performance with classification metrics.
+          </p>
+          <div class="project-tech">
+            <span class="tag accent">DenseNet121</span>
+            <span class="tag accent">Transfer Learning</span>
+            <span class="tag">CNN</span>
+            <span class="tag">PyTorch</span>
+            <span class="tag">Medical Imaging</span>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-year">2025</div>
+          <div class="project-title">SweetMind Punto Game</div>
+          <div class="project-role">Web & AI Developer</div>
+          <p class="project-desc">
+            Web-based Punto card game playable against AI or in local/online multiplayer. Implemented full game logic with AI opponent and web deployment.
+          </p>
+          <div class="project-tech">
+            <span class="tag accent">JavaScript</span>
+            <span class="tag">Game AI</span>
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">Web Deployment</span>
+          </div>
+          <a href="https://sweetmind.vercel.app/" target="_blank" class="project-link">View Project</a>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-year">2025</div>
+          <div class="project-title">Personal Finance Manager</div>
+          <div class="project-role">Fullstack Web Developer</div>
+          <p class="project-desc">
+            Web platform for personal financial management — tracking income, expenses, and financial monitoring. Collaborated on backend/frontend systems to improve user experience.
+          </p>
+          <div class="project-tech">
+            <span class="tag accent">JavaScript</span>
+            <span class="tag">Firebase</span>
+            <span class="tag">REST API</span>
+            <span class="tag">Fullstack</span>
+          </div>
+          <a href="https://pesornalfinancemanagergt.web.app" target="_blank" class="project-link">View Project</a>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-year">2025</div>
+          <div class="project-title">VitaHabit Healthy Tracker</div>
+          <div class="project-role">Frontend Developer</div>
+          <p class="project-desc">
+            Website for tracking healthy habits, gym sessions, and mindfulness. Designed web-based UI deployed on Vercel.
+          </p>
+          <div class="project-tech">
+            <span class="tag accent">Vercel</span>
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">UI Design</span>
+          </div>
+          <a href="https://vitahabit-web.vercel.app/" target="_blank" class="project-link">View Project</a>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-year">2025</div>
+          <div class="project-title">ThermaWeb — Heatmap Visualization</div>
+          <div class="project-role">Web Developer</div>
+          <p class="project-desc">
+            Weather/meteo API-based heatmap visualization for temperature data analysis. Developed an interactive web-based map display.
+          </p>
+          <div class="project-tech">
+            <span class="tag accent">REST API</span>
+            <span class="tag">Data Visualization</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Maps</span>
+          </div>
+          <a href="https://thermaweb.web.app" target="_blank" class="project-link">View Project</a>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-year">2025</div>
+          <div class="project-title">Flexbox Exercise</div>
+          <div class="project-role">Frontend</div>
+          <p class="project-desc">Responsive layout practice website built to learn CSS Flexbox.</p>
+          <div class="project-tech">
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">Flexbox</span>
+          </div>
+          <a href="https://inana22.github.io/Exercise-flexbox/" target="_blank" class="project-link">View Project</a>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-year">2025</div>
+          <div class="project-title">Roll Dice</div>
+          <div class="project-role">Frontend / JavaScript</div>
+          <p class="project-desc">Interactive dice roller built as a JavaScript exercise.</p>
+          <div class="project-tech">
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML/CSS</span>
+          </div>
+          <a href="https://inana22.github.io/Project2-RollDice/" target="_blank" class="project-link">View Project</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="achievements">
+    <div class="container">
+      <div class="sec-header fade-in">
+        <div class="sec-tag">Recognition</div>
+        <h2 class="sec-title">Achievements & Certifications</h2>
+      </div>
+      <div class="achieve-list">
+        <div class="achieve-item fade-in">
+          <div class="achieve-icon">🏆</div>
+          <div>
+            <div class="achieve-year">2025 · National</div>
+            <div class="achieve-title">Top 14 Finalist — HealthTech AI Challenge 2025 × Siloam</div>
+            <div class="achieve-desc">National-scale AI competition focused on healthcare technology solutions. Developed an AI-based solution in the health domain.</div>
+          </div>
+        </div>
+        <div class="achieve-item fade-in">
+          <div class="achieve-icon">📜</div>
+          <div>
+            <div class="achieve-year">2025 · Harvard University (edX)</div>
+            <div class="achieve-title">CS50's Introduction to Cybersecurity</div>
+            <div class="achieve-desc">Completed Harvard's cybersecurity course covering core concepts in digital security and threat mitigation.</div>
+          </div>
+        </div>
+        <div class="achieve-item fade-in">
+          <div class="achieve-icon">📊</div>
+          <div>
+            <div class="achieve-year">2025 · Kaggle</div>
+            <div class="achieve-title">Intermediate Machine Learning</div>
+            <div class="achieve-desc">Certification covering intermediate ML techniques including pipelines, cross-validation, and handling real-world datasets.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div class="sec-header fade-in">
+        <div class="sec-tag">Experience</div>
+        <h2 class="sec-title">Leadership & Organizations</h2>
+      </div>
+      <div class="exp-list fade-in">
+        <div class="exp-item">
+          <div class="exp-timeline">
+            <div class="exp-dot"></div>
+            <div class="exp-line"></div>
+          </div>
+          <div>
+            <div class="exp-period">2025 – 2026</div>
+            <div class="exp-role">Secretary</div>
+            <div class="exp-org">Himpunan Mahasiswa Informatika UPH</div>
+            <ul class="exp-bullets">
+              <li>Managed organizational administration including proposals, activity reports, and meeting documentation.</li>
+              <li>Helped coordinate internal communications between members and leadership.</li>
+              <li>Supported planning and execution of work programs and student activities.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-timeline">
+            <div class="exp-dot"></div>
+          </div>
+          <div>
+            <div class="exp-period">2024 – 2025</div>
+            <div class="exp-role">Member, External Division</div>
+            <div class="exp-org">Himpunan Mahasiswa Informatika UPH</div>
+            <ul class="exp-bullets">
+              <li>Built relationships and communication with external parties to support organizational activities.</li>
+              <li>Assisted with event publication and coordination involving inter-community collaboration.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" style="padding: 6rem 0;">
+    <div class="container" style="text-align: center; max-width: 640px;">
+      <div class="sec-tag" style="text-align:center;">Let's Connect</div>
+      <h2 class="cta-title fade-in" style="font-family:'Space Grotesk',sans-serif; font-size:clamp(2rem,4vw,3rem); font-weight:800; letter-spacing:-0.02em; margin-bottom:1rem;">
+        Bringing your <span style="color:var(--accent)">ideas to life</span>
+      </h2>
+      <p class="fade-in" style="color:var(--muted); margin-bottom:2rem;">Open to internship opportunities, collaborations, and exciting projects. Let's build something meaningful.</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;" class="fade-in">
+        <a href="mailto:karinaamalia10@gmail.com" class="btn btn-primary">karinaamalia10@gmail.com</a>
+        <a href="https://github.com/Inana22" target="_blank" class="btn btn-secondary">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="https://github.com/Inana22" target="_blank">GitHub</a>
+        <a href="mailto:karinaamalia10@gmail.com">Email</a>
+        <a href="tel:+6281279155437">Phone</a>
+      </div>
+      <p>© 2026 Karina Amalia Herfery. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  </script>
 </body>
 </html>
